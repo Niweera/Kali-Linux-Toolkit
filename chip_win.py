@@ -11,21 +11,25 @@ def get_args():
 	parser.add_option("-i" , "--interface" , dest = "interface" , help = "Interface to change the IP Address")
 	parser.add_option("-p" , "--ip" , dest = "ip" , help = "New IP Address")
 	parser.add_option("-n" , "--netmask" , dest = "netmask" , help = "New Net Mask")
+	parser.add_option("-g" , "--gateway" , dest = "gateway" , help = "New Gateway")
 	(options , arguments) =  parser.parse_args()
 	interface = options.interface
 	ip = options.ip
 	netmask = options.netmask
+	gateway = options.gateway
 	
 	#Check whether all the given parameters are given or not
 
-	if not (interface or ip or netmask):
-		parser.error("[-] Please enter interface and new IP Address and Net Mask, use --help for more information.")
+	if not (interface or ip or netmask or gateway):
+		parser.error("[-] Please enter interface, new IP Address, Net Mask and Gateway, use --help for more information.")
 	elif not (interface):
 		parser.error("[-] Please enter an interface, use --help for more information.")
 	elif not (ip):
 		parser.error("[-] Please enter a new IP Address, use --help for more information.")
 	elif not (netmask):
 		parser.error("[-] Please enter a new Net Mask, use --help for more information.")
+	elif not (gateway):
+		parser.error("[-] Please enter a new Gateway, use --help for more information.")
 	else:
 		return options
 
@@ -35,13 +39,14 @@ def get_args():
 #valid interface or not.
 #If the given interface is not valid then the program stops.
 
-def ch_mac(interface,ip,netmask):
+def ch_mac(interface,ip,netmask,gateway):
 	#if check_mac(interface) or True:
 	if True:
 		#print("[+] Changing IP Address of " + interface + " to " + ip + " and Net Mask to " + netmask)
 		#get_current_ip(interface)
 		#subprocess.call(["ifconfig" , interface , ip , "netmask" , netmask])
 		#check_new_ip(interface)
+		subprocess.call(["netsh" , "interface" , "ipv4" , "set" , "address" , "name" , "=" , interface , "static" , ip ,  netmask , gateway], shell=True)
 		subprocess.call(["netsh" , "interface" ,  "ipv4" ,  "show" , "config", "name","=",interface], shell=True)
 	else:
 		print("[-] The MAC Address can not be read!")
@@ -91,4 +96,4 @@ options = get_args()
 
 #Calling the function ch_mac()
 
-ch_mac(options.interface , options.ip , options.netmask)
+ch_mac(options.interface , options.ip , options.netmask, options.gateway)
