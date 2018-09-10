@@ -1,0 +1,13 @@
+http://whois.domaintools.com 
+can be used to Whois Lookup - Find info about the owner of the target.
+
+
+http://toolbar.netcraft.com/site_report?url=
+Netcraft Site Report - Shows technologies used on the target.
+
+
+https://www.robtex.com/
+Robtex DNS lookup - Shows comprehensive info about the target website.
+
+dirb http://10.20.14.204/mutilladae
+ 
